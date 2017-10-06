@@ -1,3 +1,23 @@
+
+var textures = {
+  'map': {
+    url: 'bergamota-3.jpg',
+    val: undefined
+  },
+  'mapPeeled': {
+    url: 'bergamota--peeled.jpg',
+    val: undefined
+  },
+  'gordinho': {
+    url: 'bergamota-3.jpg',
+    val: undefined
+  },
+  'bumpMap': {
+    url: 'bergamota_bump.jpg',
+    val: undefined
+  }
+};
+
 var Bergamota = function (radius, segments) {
 
   THREE.Object3D.call(this);
@@ -9,24 +29,6 @@ var Bergamota = function (radius, segments) {
   // instantiate a loader
   var loader = new THREE.TextureLoader();
 
-  var textures = {
-    'map': {
-      url: 'bergamota-3.jpg',
-      val: undefined
-    },
-    'mapPeeled': {
-      url: 'bergamota--peeled.jpg',
-      val: undefined
-    },
-    'gordinho': {
-      url: 'bergamota-3.jpg',
-      val: undefined
-    },
-    'bumpMap': {
-      url: 'bergamota_bump.jpg',
-      val: undefined
-    }
-  };
 
   var texturePromises = [], path = './';
 
@@ -63,7 +65,7 @@ var Bergamota = function (radius, segments) {
     textures.mapPeeled.val.wrapT = THREE.RepeatWrapping;
     textures.mapPeeled.val.repeat.set( 16, 16 );
     var material = new THREE.MeshPhongMaterial({
-      map: textures.mapPeeled.val,
+      map: textures.map.val,
       bumpMap: textures.bumpMap.val,
       bumpScale: 0.05
     });
@@ -113,3 +115,7 @@ var Bergamota = function (radius, segments) {
 
 Bergamota.prototype = Object.create(THREE.Object3D.prototype);
 Bergamota.prototype.constructor = Bergamota;
+
+Bergamota.prototype.descasca = function() {
+  bergamota.children[0].material.map = textures.mapPeeled.val
+}

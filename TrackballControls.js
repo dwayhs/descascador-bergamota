@@ -5,6 +5,8 @@
  * @author Luca Antiga 	/ http://lantiga.github.io
  */
 
+var totalAngle = 0
+
 THREE.TrackballControls = function ( object, domElement ) {
 
 	var _this = this;
@@ -159,8 +161,13 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 			moveDirection.set( _moveCurr.x - _movePrev.x, _moveCurr.y - _movePrev.y, 0 );
 			angle = moveDirection.length();
+			totalAngle += angle
 
 			if ( angle ) {
+
+				if(totalAngle > 10) {
+					bergamota.descasca()
+				}
 
 				_eye.copy( _this.object.position ).sub( _this.target );
 
