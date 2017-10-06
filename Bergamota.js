@@ -14,6 +14,10 @@ var Bergamota = function (radius, segments) {
       url: 'bergamota-3.jpg',
       val: undefined
     },
+    'mapPeeled': {
+      url: 'bergamota--peeled.jpg',
+      val: undefined
+    },
     'gordinho': {
       url: 'bergamota-3.jpg',
       val: undefined
@@ -54,8 +58,12 @@ var Bergamota = function (radius, segments) {
     textures.map.val.wrapS = THREE.RepeatWrapping;
     textures.map.val.wrapT = THREE.RepeatWrapping;
     textures.map.val.repeat.set( 8, 8 );
+
+    textures.mapPeeled.val.wrapS = THREE.RepeatWrapping;
+    textures.mapPeeled.val.wrapT = THREE.RepeatWrapping;
+    textures.mapPeeled.val.repeat.set( 16, 16 );
     var material = new THREE.MeshPhongMaterial({
-      map: textures.map.val,
+      map: textures.mapPeeled.val,
       bumpMap: textures.bumpMap.val,
       bumpScale: 0.05
     });
